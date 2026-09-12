@@ -29,3 +29,15 @@ def cosine_similarity(vector_a: np.ndarray, vector_b: np.ndarray) -> float:
         return 0.0
 
     return float(numerator/denominator)
+
+def jaccard_similarity(vector_a: np.ndarray, vector_b: np.ndarray) -> float:
+    """"
+    Computes the jaccard similarity (intersection over union) between two 1D Vectors
+    """
+    intersection = np.intersect1d(vector_a, vector_b)
+    union = np.union1d(vector_a, vector_b)
+
+    if len(union) == 0:
+        return 0.0 # prevent division by 0 errors
+
+    return float(len(intersection) / len(union))
