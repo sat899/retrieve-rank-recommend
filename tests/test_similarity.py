@@ -3,7 +3,7 @@ Tests for similarity.py
 """
 
 import numpy as np
-from utils.similarity import dot_product, cosine_similarity
+from utils.similarity import dot_product, cosine_similarity, jaccard_similarity
 
 def test_dot_product():
     vector_a = np.array([3.0, 5.0])
@@ -22,3 +22,9 @@ def test_cosine_similarity():
     vector_b = np.array([2.0, 4.0, 6.0]) # b is just a*2
     expected_result = 1.0
     assert np.isclose(cosine_similarity(vector_a, vector_b), expected_result)
+
+def test_jaccard_similarity():
+    vector_a = np.array([1.0, 2.0, 3.0])
+    vector_b = np.array([2.0, 4.0, 6.0])
+    expected_result = 0.2 # 1/ 5
+    assert np.isclose(jaccard_similarity(vector_a, vector_b), expected_result)
